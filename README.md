@@ -1,1 +1,1 @@
-"# angular-scaffolding" 
+# angular-scaffolding
