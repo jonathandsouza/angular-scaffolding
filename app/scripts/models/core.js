@@ -2,6 +2,6 @@
 
 	"use strict";
 
-	angular.module('bct.models', ['bct.models.guest-booking-history']);
+	angular.module('bct.models', []);
 
 })();	

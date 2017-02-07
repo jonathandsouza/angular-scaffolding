@@ -7,8 +7,7 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- build:css assets/css/app.min.css -->
-	<link rel="stylesheet" href="assets/css/core.css">
+	<!-- build:css css/app.min.css -->
 	<link rel="stylesheet" href="assets/css/main.css">
 	<!-- endbuild -->
 
@@ -16,32 +15,30 @@
 
 <body>
 
-<header>
-	<div ui-view="header"></div>
+<header ui-view="header">
 </header>
 <div ui-view="container">
 </div>
-<footer id="mainFooter" ui-view="footer">
+<footer ui-view="footer">
 </footer>
 
-<!-- build:js  assets/js/bower.min.js -->
+<!-- build:js  js/bower.min.js -->
 <!-- bower:js -->
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="../bower_components/underscore/underscore.js"></script>
+<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
-<!-- build:js assets/js/app.min.js -->
-<script src="scripts/utils/extend.js"></script>
+<!-- build:js js/app.min.js -->
 <script src="scripts/utils/underscore.js"></script>
 <script src="scripts/utils/core.js"></script>
-
 <script src="scripts/models/core.js"></script>
-
 <script src="scripts/modules/core.js"></script>
-
-
 <script src="scripts/pages/core.js"></script>
-
-
 <script src="scripts/app.js"></script>
 <!-- endbuild -->
 

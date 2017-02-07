@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
 
 	// Load grunt tasks automatically
 	require('load-grunt-tasks')(grunt);
@@ -14,7 +14,7 @@ module.exports = function (grunt) {
 	var appConfig = {
 		root: __dirname + '/',
 		app: __dirname + '/app',
-		dist: __dirname + '/assets',
+		dist: __dirname + '/dist',
 		appDirName: 'assets'
 	};
 
@@ -53,7 +53,7 @@ module.exports = function (grunt) {
 				options: {
 					debug: false,
 					open: true,
-					middleware: function (connect) {
+					middleware: function(connect) {
 						return [
 							modRewrite(['^[^\\.]*$ /index.html [L]']),
 							connect.static('.tmp'),
@@ -95,7 +95,7 @@ module.exports = function (grunt) {
 						expand: true,
 						cwd: '<%=configuration.app %>',
 						src: ['index.html'],
-						dest: ''
+						dest: '<%=configuration.dist%>'
 					}
 				]
 			}
@@ -113,7 +113,7 @@ module.exports = function (grunt) {
 				files: [{
 					expand: true,
 					cwd: '<%= configuration.app %>/assets',
-					dest: '<%= configuration.dist %>',
+					dest: '<%= configuration.dist %>/assets',
 					src: ['views/**/*.html'], //'{index,404,browser,under-construction}.html',
 				}]
 			}
@@ -141,7 +141,7 @@ module.exports = function (grunt) {
 		useminPrepare: {
 			html: '<%=configuration.app%>/index.html',
 			options: {
-				dest: '<%=configuration.root%>'
+				dest: '<%=configuration.dist%>'
 			}
 		},
 
@@ -149,9 +149,9 @@ module.exports = function (grunt) {
 			dist: {
 				files: [{
 					expand: true,
-					cwd: '.tmp/concat/assets/js',
+					cwd: '.tmp/concat/js',
 					src: '*.js',
-					dest: '.tmp/concat/assets/js'
+					dest: '.tmp/concat/js'
 				}]
 			}
 		},
@@ -166,14 +166,14 @@ module.exports = function (grunt) {
 		},
 
 		usemin: {
-			html: 'index.html',
+			html: '<%= configuration.dist %>/index.html',
 			js: ['<%= configuration.dist %>/js/{,*/}*.js'],
 			options: {
 				assetsDirs: [
 					'<%= configuration.dist%>',
-					'<%= configuration.dist%>/img/',
+					'<%= configuration.dist%>/assets/img/',
 					'<%= configuration.dist%>/js/',
-					'<%= configuration.dist%>/views'
+					'<%= configuration.dist%>/asstes/views'
 				]
 			}
 		},
@@ -184,7 +184,7 @@ module.exports = function (grunt) {
 					paths: ['app/styles']
 				},
 				files: {
-					'<%= configuration.dist%>/assets/css/main.css': 'app/styles/_.less'
+					'<%= configuration.app%>/assets/css/main.css': 'app/styles/_.less'
 				}
 			}
 		},
@@ -202,22 +202,20 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('default', ['serve']);
 
-
-	grunt.registerTask('serve', 'Compile then start a connect web server', function () {
+	grunt.registerTask('serve', 'Compile then start a connect web server', function() {
 
 		grunt.task.run([
 			'connect:livereload',
-			'wiredep:dist',
+			'wiredep',
 			'less:dist',
 			'watch'
 		]);
 
 	});
 
-
 	grunt.registerTask('build', [
 		'clean:build',
-		'wiredep:dist',
+		'wiredep',
 		'less:dist',
 		'useminPrepare',
 		'copy:dist',
@@ -226,10 +224,8 @@ module.exports = function (grunt) {
 		'ngAnnotate',
 		'cssmin:generated',
 		'uglify:generated',
-		//'filerev',
+		'filerev',
 		'usemin',
 		'clean:postBuildCleanUp'
 	]);
-
-
 };

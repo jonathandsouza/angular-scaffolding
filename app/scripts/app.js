@@ -1,4 +1,4 @@
-(function (window) {
+(function(window) {
 
 	"use strict";
 
@@ -16,51 +16,44 @@
 
 		//3rd Party dependencies;
 		'ui.router',
-		'angularSpinner',
 		'ui.bootstrap'
 	])
 
-		.config(function ($stateProvider, $urlRouterProvider, usSpinnerConfigProvider, $httpProvider) {
+		.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
-			$urlRouterProvider.otherwise("/guest-booking-history");
-
+			$urlRouterProvider.otherwise("/home");
 
 			$stateProvider
 				.state('root', {
 					url: '',
 					abstract: true,
-					views: {
-						'header': {
-							templateUrl: 'assets/views/root/header.html',
-							controller: 'RootController'
-						},
-						'footer': {
-							templateUrl: 'assets/views/root/footer.html',
-							controller: 'RootController'
-						}
-					}
+					// views: {
+					// 	'header': {
+					// 		templateUrl: 'assets/views/root/header.html',
+					// 		controller: 'RootController'
+					// 	},
+					// 	'footer': {
+					// 		templateUrl: 'assets/views/root/footer.html',
+					// 		controller: 'RootController'
+					// 	}
+					// }
 				})
-				.state('root.guestBookingHistory', {
-					url: '/guest-booking-history?phone',
-
+				.state('root.home', {
+					url: '/home',
 					views: {
 						'container@': {
-							templateUrl: 'assets/views/guest-booking-history/view.html',
-							controller: 'GuestBookingHistoryController',
-							controllerAs: 'guestBkHistCtrl'
+							templateUrl: 'assets/views/home/main.html',
+							controller: 'HomeController',
+							controllerAs: 'homeCtrl'
 						}
 					}
 				});
 
 
-			//default Spinner Settings;
-			usSpinnerConfigProvider.setDefaults({color: '#ec008c', radius: 10});
-
-
-			$httpProvider.interceptors.push(function ($q) {
+			$httpProvider.interceptors.push(function($q) {
 				return {
 
-					'response': function (response) {
+					'response': function(response) {
 
 						if (angular.isDefined(response.data.status) && response.data.status === "failure") {
 							alert(response.data.message);
