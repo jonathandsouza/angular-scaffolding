@@ -1,0 +1,87 @@
+{
+	"extends": "eslint:recommended",
+	"rules": {
+		"consistent-this": ["error", "that"],
+		"linebreak-style": ["error", "unix"],
+		"brace-style": ["error", "stroustrup"],
+		"comma-style": ["error", "last"],
+		"one-var": ["error", "never"],
+		"no-unneeded-ternary": "error",
+		"no-unsafe-negation": "error",
+		"no-negated-condition": "error",
+		"no-cond-assign": "error",
+		"no-extra-parens": "error",
+		"no-constant-condition": "error",
+		"no-sequences": "error",
+		"no-new": "error",
+		"no-throw-literal": "error",
+		"no-unmodified-loop-condition": "error",
+		"yoda": "error",
+		"eqeqeq": ["error", "always"],
+
+		"no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
+		"indent": ["error", "tab", {"SwitchCase": 1}],
+		"no-unused-vars": ["error", {"vars": "all", "args": "none"}],
+		"spaced-comment": ["error", "always"],
+		"lines-around-comment": ["error", {
+			"afterBlockComment": false,
+			"beforeLineComment": true,
+			"afterLineComment": false,
+			"allowBlockStart": true,
+			"allowObjectStart": true,
+			"allowArrayStart": true
+		}],
+		"space-before-function-paren": ["error", "never"],
+		"no-fallthrough": "error",
+		"object-curly-spacing": ["error", "never", {
+			"arraysInObjects": false,
+			"objectsInObjects": false
+		}],
+		"array-bracket-spacing": ["error", "never", {
+			"objectsInArrays": false,
+			"arraysInArrays": false
+		}],
+		"space-in-parens": ["error", "never"],
+		"keyword-spacing": ["error", {
+			"before": true,
+			"after": true,
+			"overrides": {
+				"catch": {
+					"after": false
+				}
+			}
+		}],
+		"key-spacing": ["error", {
+			"beforeColon": false,
+			"afterColon": true
+		}],
+		"no-multi-spaces": "error",
+		"space-infix-ops": "error",
+		"no-trailing-spaces": ["error", {
+			"skipBlankLines": true
+		}],
+		"no-whitespace-before-property": "error",
+		"space-before-blocks": "error",
+		"comma-spacing": ["error", { "before": false, "after": true }],
+		"semi-spacing": "error",
+		"semi": "error",
+		"object-property-newline": ["error", { "allowMultiplePropertiesPerLine": true }],
+		"lines-around-directive": ["error", "always"],
+		"no-multiple-empty-lines": "error",
+		"max-len": ["error", 200, 4],
+		"quotes": ["error", "single"],
+		"quote-props": ["error", "as-needed"]
+	},
+	"env": {
+		"browser": true,
+		"jquery": true
+	},
+	"globals": {
+		"angular": true,
+		"google": true,
+		"_": true,
+		"DEBUG": true,
+		"adjustIFrame": true,
+		"Spinner": true
+	}
+}

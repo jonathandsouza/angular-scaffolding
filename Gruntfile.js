@@ -8,8 +8,6 @@ module.exports = function(grunt) {
 	// Time how long tasks take. Can help when optimizing build times
 	require('time-grunt')(grunt);
 
-	require('load-grunt-tasks')(grunt);
-
 	var modRewrite = require('connect-modrewrite');
 
 	// Configurable paths for the application
@@ -201,12 +199,6 @@ module.exports = function(grunt) {
 			}
 		},
 
-		eslint: {
-			options: {
-				configFile: '.eslintrc.json'
-			},
-			target: ['app/scripts/app.js']
-		}
 	});
 
 	grunt.registerTask('default', ['serve']);
